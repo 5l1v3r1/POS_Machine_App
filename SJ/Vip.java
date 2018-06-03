@@ -56,10 +56,11 @@ public class Vip extends JPanel implements ActionListener{
 				String inputStr[] =new String[5];
 				
 				inputStr[0]= numberfield.getText();
-				inputStr[1]= levelfield.getText();
+				inputStr[1] = levelfield.getText();
 				inputStr[2]= namefield.getText();
 				inputStr[3]= mileagefield.getText();
 				inputStr[4]= phonefield.getText();
+				
 				model.addRow(inputStr);
 				
 				numberfield.setText("");

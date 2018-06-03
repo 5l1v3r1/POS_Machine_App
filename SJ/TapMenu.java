@@ -12,6 +12,7 @@ public class TapMenu extends JTabbedPane
     private  Employee j5;
     private Menu j4;
     private Vip j3;
+    
     public TapMenu()
     {
     		
