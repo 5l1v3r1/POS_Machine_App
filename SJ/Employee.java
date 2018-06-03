@@ -176,6 +176,7 @@ public class Employee extends JPanel implements ActionListener{
 					}
 					outputStream.close();
 					
+					// 파일 업데이트 되는 부분
 					File file =new File("employee.txt");
 					file.delete();
 					file =new File("temp.txt");
