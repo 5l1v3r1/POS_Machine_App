@@ -89,7 +89,7 @@ public class Employee extends JPanel implements ActionListener{
 			}
 		}
 		
-		
+		//추가기능, 파일에도 저장됨
 		JButton addBtn =new JButton("추가");
 		addBtn.addActionListener(new ActionListener() {
 			
@@ -109,6 +109,7 @@ public class Employee extends JPanel implements ActionListener{
 					er.printStackTrace();
 				}
 				
+				//파일에도 한줄씩 저장해주고 있다.
 				inputStr[0]= numberfield.getText();
 				outputStream.print(inputStr[0]+" ");
 				inputStr[1]= namefield.getText();
@@ -127,6 +128,7 @@ public class Employee extends JPanel implements ActionListener{
 				
 				outputStream.close();
 				
+				//프론트에 추가
 				model.addRow(inputStr);
 		
 				numberfield.setText("");
@@ -139,6 +141,7 @@ public class Employee extends JPanel implements ActionListener{
 			}
 		});
 		
+		//삭제기능 , 파일에서도 삭제됨
 		JButton delBtn = new JButton("삭제");
 		delBtn.addActionListener(new ActionListener() {
 			
@@ -160,7 +163,8 @@ public class Employee extends JPanel implements ActionListener{
 						er.printStackTrace();
 					}
 					
-					int i=0,cnt=0;
+					/* 파일에 저장된 데이터도 삭제*/
+					int i=0;
 					while(inputStream.hasNextLine() ) {
 						if(i !=  table.getSelectedRow()) {
 							String line = inputStream.nextLine();
@@ -176,8 +180,9 @@ public class Employee extends JPanel implements ActionListener{
 					file.delete();
 					file =new File("temp.txt");
 					File dest =new File("employee.txt");
-					file.renameTo(dest);
+					file.renameTo(dest);                
 					
+					//프론트에서 삭제
 					model.removeRow(table.getSelectedRow());
 				}
 			}
