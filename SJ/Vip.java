@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Employee extends JPanel implements ActionListener{
+public class Vip extends JPanel implements ActionListener{
 	private int id;
 	private String name;
 	private double pay;
@@ -24,8 +24,8 @@ public class Employee extends JPanel implements ActionListener{
 	private String date_in;
 	private String phone;
 	
-	public Employee() {
-		String title[] = {"번호", "이름" ,"급여","직급", "입사일", "연락처"};
+	public Vip() {
+		String title[] = {"번호", "등급" ,"이름","마일리지",  "연락처"};
 		String info[][]= {
 		};
 		DefaultTableModel model = new DefaultTableModel(info,title);
@@ -36,17 +36,15 @@ public class Employee extends JPanel implements ActionListener{
 		panel.setLayout(new BoxLayout(panel,BoxLayout.X_AXIS));
 		
 		JTextField numberfield =new JTextField(5);
+		JTextField levelfield = new JTextField(5);
 		JTextField namefield = new JTextField(5);
-		JTextField payfield = new JTextField(5);
-		JTextField positionfield = new JTextField(5);
-		JTextField datefield = new JTextField(10);
+		JTextField mileagefield = new JTextField(5);
 		JTextField phonefield = new JTextField(10);
 		
 		panel.add(numberfield);
+		panel.add(levelfield);
 		panel.add(namefield);
-		panel.add(payfield);
-		panel.add(positionfield);
-		panel.add(datefield);
+		panel.add(mileagefield);
 		panel.add(phonefield);
 		
 		JButton addBtn =new JButton("추가");
@@ -55,21 +53,19 @@ public class Employee extends JPanel implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String inputStr[] =new String[6];
+				String inputStr[] =new String[5];
 				
 				inputStr[0]= numberfield.getText();
-				inputStr[1]= namefield.getText();
-				inputStr[2]= payfield.getText();
-				inputStr[3]= positionfield.getText();
-				inputStr[4]= datefield.getText();
-				inputStr[5]= phonefield.getText();
+				inputStr[1]= levelfield.getText();
+				inputStr[2]= namefield.getText();
+				inputStr[3]= mileagefield.getText();
+				inputStr[4]= phonefield.getText();
 				model.addRow(inputStr);
 				
 				numberfield.setText("");
 				namefield.setText("");
-				payfield.setText("");
-				positionfield.setText("");
-				datefield.setText("");
+				mileagefield.setText("");
+				levelfield.setText("");
 				phonefield.setText("");
 				
 			}
