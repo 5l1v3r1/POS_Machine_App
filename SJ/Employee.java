@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -29,13 +30,6 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class Employee extends JPanel implements ActionListener{
-	private int id;
-	private String name;
-	private double pay;
-	private String position;
-	private String date_in;
-	private String phone;
-	private static int cnt =0;
 	
 	public Employee() {
 		String title[] = {"번호", "이름" ,"급여","직급", "입사일", "연락처"};
@@ -148,7 +142,7 @@ public class Employee extends JPanel implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println(table.getSelectedRow());
+				
 				if(table.getSelectedRow() == -1)
 					return;
 				else {
@@ -189,9 +183,49 @@ public class Employee extends JPanel implements ActionListener{
 			}
 		});
 		
+		
+		//편집기능, 파일에도 적용
+		JButton editBtn =new JButton("편집");
+		editBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String inputStr[] = new String[6];
+				PrintWriter outputStream =null;
+				
+				try {
+					outputStream =new PrintWriter(new FileOutputStream("temp.txt",true));	
+				}
+				catch(FileNotFoundException er){
+					er.printStackTrace();
+				}
+				
+				//파일에 적용
+				for (Object o : model.getDataVector()) {
+			        Vector v = (Vector) o;
+			        //System.out.println(v);
+			        for(int i=0;i<5;i++) {
+			        	inputStr[i] = (String)v.elementAt(i);
+			        	//System.out.print(inputStr[i]+" ");
+			        	outputStream.print(inputStr[i]+" ");
+			        }
+			        inputStr[5] =(String)v.elementAt(5);
+			       // System.out.println(inputStr[5]);
+			       outputStream.println(inputStr[5]);
+			    }
+				outputStream.close();
+				File file =new File("employee.txt");
+				file.delete();
+				file =new File("temp.txt");
+				File dest =new File("employee.txt");
+				file.renameTo(dest); 
+			}
+		});
+		
 	    panel.add(addBtn);
 		panel.add(delBtn);
-		
+		panel.add(editBtn);
 		add(sp,BorderLayout.CENTER);
 		add(panel,BorderLayout.SOUTH);
 		
