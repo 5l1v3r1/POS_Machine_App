@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,8 +44,21 @@ public class Vip extends JPanel implements ActionListener{
 		JTable table= new JTable(model);
 		JScrollPane sp= new JScrollPane(table);
 		
+		JPanel totalPanel = new JPanel(new GridLayout(3, 1));
+		JPanel namePanel = new JPanel(new GridLayout(1, 5));
+		JLabel lnum =new JLabel("번호");
+		JLabel llevel =new JLabel("번호");
+		JLabel lname =new JLabel("번호");
+		JLabel lmileage =new JLabel("번호");
+		JLabel lphone =new JLabel("번호");
+		namePanel.add(lnum);
+		namePanel.add(llevel);
+		namePanel.add(lname);
+		namePanel.add(lmileage);
+		namePanel.add(lphone);
+		
 		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel,BoxLayout.X_AXIS));
+		panel.setLayout(new GridLayout(1, 5));
 		
 		JTextField numberfield =new JTextField(5);
 		JTextField levelfield = new JTextField(5);
@@ -246,11 +260,17 @@ public class Vip extends JPanel implements ActionListener{
 		}
 		});
 		
-	    panel.add(addBtn);
-		panel.add(delBtn);
-		panel.add(editBtn);
+		JPanel btnPanel = new JPanel();
+		btnPanel.add(addBtn);
+		btnPanel.add(delBtn);
+		btnPanel.add(editBtn);
+		
+		totalPanel.add(namePanel);
+		totalPanel.add(panel);
+		totalPanel.add(btnPanel);
+		
 		add(sp,BorderLayout.CENTER);
-		add(panel,BorderLayout.SOUTH);
+		add(totalPanel,BorderLayout.SOUTH);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,8 +40,27 @@ public class Employee extends JPanel implements ActionListener{
 		JTable table= new JTable(model);
 		JScrollPane sp= new JScrollPane(table);
 		
+		//getContentPane().setBackground(Color.YELLOW);
+		JPanel totalPanel =new JPanel(new GridLayout(3, 1));
+		totalPanel.setBackground(Color.red);
+		JPanel namePanel =new JPanel();
+		namePanel.setLayout(new GridLayout(1,5));
+		JLabel number= new JLabel("번호");
+		JLabel name= new JLabel("이름");
+		JLabel pay= new JLabel("급여");
+		JLabel position= new JLabel("직급");
+		JLabel phone= new JLabel("연락처");
+		namePanel.add(number);
+		namePanel.add(name);
+		namePanel.add(pay);
+		namePanel.add(position);
+		namePanel.add(phone);
+		namePanel.setBackground(Color.RED);
+		//namePanel.setLocation(namePanel.get, namePanel.getY());
+		totalPanel.add(namePanel);
+		
 		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel,BoxLayout.X_AXIS));
+		panel.setLayout(new GridLayout(1,5));
 		
 		JTextField numberfield =new JTextField(5);
 		JTextField namefield = new JTextField(5);
@@ -151,7 +171,7 @@ public class Employee extends JPanel implements ActionListener{
 					
 					try {
 						inputStream= new Scanner(new FileInputStream("employee.txt"));
-						outputStream =new PrintWriter(new FileOutputStream("temp.txt",true));	
+						outputStream =new PrintWriter(new FileOutputStream("emptemp.txt",true));	
 					}
 					catch(FileNotFoundException er){
 						er.printStackTrace();
@@ -173,7 +193,7 @@ public class Employee extends JPanel implements ActionListener{
 					// 파일 업데이트 되는 부분
 					File file =new File("employee.txt");
 					file.delete();
-					file =new File("temp.txt");
+					file =new File("emptemp.txt");
 					File dest =new File("employee.txt");
 					file.renameTo(dest);                
 					
@@ -195,7 +215,7 @@ public class Employee extends JPanel implements ActionListener{
 				PrintWriter outputStream =null;
 				
 				try {
-					outputStream =new PrintWriter(new FileOutputStream("temp.txt",true));	
+					outputStream =new PrintWriter(new FileOutputStream("emptemp.txt",true));	
 				}
 				catch(FileNotFoundException er){
 					er.printStackTrace();
@@ -217,17 +237,25 @@ public class Employee extends JPanel implements ActionListener{
 				outputStream.close();
 				File file =new File("employee.txt");
 				file.delete();
-				file =new File("temp.txt");
+				file =new File("emptemp.txt");
 				File dest =new File("employee.txt");
 				file.renameTo(dest); 
 			}
 		});
 		
-	    panel.add(addBtn);
+		JPanel btnPanel = new JPanel();
+		btnPanel.add(addBtn);
+		btnPanel.add(delBtn);
+		btnPanel.add(editBtn);
+		
+	   /* panel.add(addBtn);
 		panel.add(delBtn);
-		panel.add(editBtn);
-		add(sp,BorderLayout.CENTER);
-		add(panel,BorderLayout.SOUTH);
+		panel.add(editBtn);*/
+		
+		totalPanel.add(panel);
+		totalPanel.add(btnPanel);
+		add(sp);
+		add(totalPanel,BorderLayout.SOUTH);
 		
 	}
 

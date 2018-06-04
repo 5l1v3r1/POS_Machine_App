@@ -94,7 +94,7 @@ class Bye extends JFrame implements ActionListener{
 	}
 }
 public class StartRestaurant extends JFrame implements ActionListener{
-	public static final int WIDTH =1100;
+	public static final int WIDTH =1200;
 	public static final int HEIGHT =600;
 	JPanel employeePanel,vipPanel,tablePanel,storagePanel,menusPanel;
 	
@@ -115,6 +115,7 @@ public class StartRestaurant extends JFrame implements ActionListener{
 		JLabel date=new JLabel(mTime);
 		//마감 
 		JButton endButton= new JButton("마감 ");
+		endButton.setSize(50, 30);
 		JPanel datePanel =new JPanel();
 		datePanel.setLayout(new FlowLayout());
 		datePanel.add(date);
@@ -127,13 +128,19 @@ public class StartRestaurant extends JFrame implements ActionListener{
 		//종료
 		JButton exitButton =new JButton("종료 ");
 		exitButton.setActionCommand("exit");
-		exitButton.setSize(50,50);
+		exitButton.setSize(NORMAL, NORMAL);
 		exitButton.addActionListener(this);
 		JPanel moneyPanel= new JPanel();
-		moneyPanel.setLayout(new GridLayout(3,1));
+		
+		JPanel exitPanel =new JPanel();
+		exitPanel.add(exitButton);
+		
+		
+		moneyPanel.setLayout(new GridLayout(2,2));
 		moneyPanel.add(todayIncome);
+		moneyPanel.add(exitPanel);
 		moneyPanel.add(totalMoney);
-		moneyPanel.add(exitButton);
+		//moneyPanel.add(exitButton);
 		moneyPanel.setSize(100,50);
 		
 		//메뉴 탭 //다른 클래스의 내용을 추가시켜줄 경우 그 쪽의세부요소를 직접 넣어주자.
@@ -147,9 +154,11 @@ public class StartRestaurant extends JFrame implements ActionListener{
 		add(tabPanel,BorderLayout.CENTER);
 		
 		JPanel topPanel= new JPanel();
-		topPanel.setLayout(new GridLayout(1, 2));
+		topPanel.setLayout(new GridLayout(1, 3));
 		topPanel.add(datePanel);
 		topPanel.add(moneyPanel);
+		
+		
 		add(topPanel,BorderLayout.NORTH);  
 		
 		
