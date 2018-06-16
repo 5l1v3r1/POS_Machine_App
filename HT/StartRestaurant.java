@@ -64,8 +64,8 @@ class ConfirmWindow extends JFrame implements ActionListener{
 	}
 }
 
-class bye extends JFrame implements ActionListener{
-	public bye() {
+class Bye extends JFrame implements ActionListener{
+	public Bye() {
 		setSize(300,200);
 		getContentPane().setBackground(Color.YELLOW);;
 		setLayout(new FlowLayout());
@@ -105,7 +105,7 @@ public class StartRestaurant extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		addWindowListener(new CheckOnExit());
 		
-	    // 날짜, 마감	버튼
+	    // 날짜, 마감	버튼 수정 
 		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy.MM.dd ", Locale.KOREA );
 		Date currentTime = new Date ();
 		String mTime = mSimpleDateFormat.format ( currentTime );
@@ -153,9 +153,9 @@ public class StartRestaurant extends JFrame implements ActionListener{
 		add(topPanel,BorderLayout.NORTH);  
 		
 		
-		JPanel menuPanel=new JPanel();
+		/*JPanel menuPanel=new JPanel();
 		menuPanel.setLayout(new GridLayout(1, 5));
-		menuPanel.setBackground(Color.LIGHT_GRAY);
+		menuPanel.setBackground(Color.LIGHT_GRAY);*/
 		
 		
 	}
@@ -164,7 +164,7 @@ public class StartRestaurant extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String btnStr = e.getActionCommand();
 		if(btnStr.equalsIgnoreCase("exit")) {
-			bye exBye=new bye();
+			Bye exBye=new Bye();
 			exBye.setVisible(true);
 		}
 		

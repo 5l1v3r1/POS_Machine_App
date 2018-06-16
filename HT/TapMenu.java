@@ -8,8 +8,11 @@ public class TapMenu extends JTabbedPane
 {
     // 텝과 레이블 변수 선언
     private JTabbedPane tab;
+    private Table j1;
     private Storage j2;
+    private Vip j3;
     private Menu j4;
+    private  Employee j5;
     
     public TapMenu()
     {
@@ -20,19 +23,22 @@ public class TapMenu extends JTabbedPane
         
         // 패널 생성
         JPanel one = new JPanel();
-        
+        j1=new Table();
         JPanel two = new JPanel();
         j2 = new Storage();
         JPanel three=new JPanel();
+        j3= new Vip();
         JPanel four=new JPanel();
         j4 = new Menu();
         JPanel five=new JPanel();
+        j5 = new Employee();
         
-   
         // 패널 추가
+        one.add(j1);
         two.add(j2);
         four.add(j4);
-        
+        five.add(j5);
+        three.add(j3);
         // 탭 명칭과 컴포넌트 추가
         tab.addTab("테이블 ", one);
         tab.addTab("창고 ", two);
