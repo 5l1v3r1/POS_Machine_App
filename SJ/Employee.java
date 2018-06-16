@@ -42,7 +42,7 @@ public class Employee extends JPanel implements ActionListener{
 		
 		//getContentPane().setBackground(Color.YELLOW);
 		JPanel totalPanel =new JPanel(new GridLayout(3, 1));
-		totalPanel.setBackground(Color.red);
+		//totalPanel.setBackground(Color.red);
 		JPanel namePanel =new JPanel();
 		namePanel.setLayout(new GridLayout(1,5));
 		JLabel number= new JLabel("번호");
@@ -55,7 +55,7 @@ public class Employee extends JPanel implements ActionListener{
 		namePanel.add(pay);
 		namePanel.add(position);
 		namePanel.add(phone);
-		namePanel.setBackground(Color.RED);
+		//namePanel.setBackground(Color.RED);
 		//namePanel.setLocation(namePanel.get, namePanel.getY());
 		totalPanel.add(namePanel);
 		

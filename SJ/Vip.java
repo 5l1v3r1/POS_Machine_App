@@ -47,10 +47,10 @@ public class Vip extends JPanel implements ActionListener{
 		JPanel totalPanel = new JPanel(new GridLayout(3, 1));
 		JPanel namePanel = new JPanel(new GridLayout(1, 5));
 		JLabel lnum =new JLabel("번호");
-		JLabel llevel =new JLabel("번호");
-		JLabel lname =new JLabel("번호");
-		JLabel lmileage =new JLabel("번호");
-		JLabel lphone =new JLabel("번호");
+		JLabel llevel =new JLabel("등급");
+		JLabel lname =new JLabel("이름");
+		JLabel lmileage =new JLabel("마일리지");
+		JLabel lphone =new JLabel("연락처");
 		namePanel.add(lnum);
 		namePanel.add(llevel);
 		namePanel.add(lname);
