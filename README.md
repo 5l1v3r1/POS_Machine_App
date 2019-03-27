@@ -1,2 +1,4 @@
-# JP_TP
-자바 팀프 포스기
+# JAVA GUI TERM PROJECT
+
+Use Java Programming 
+Make GUI POS Machine
